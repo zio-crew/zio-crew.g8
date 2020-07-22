@@ -32,7 +32,8 @@ lazy val commonSettings = Seq(
   scalacOptions --= Seq(
     "-Xfatal-warnings"
   ),
-  name := "<projectName"
+  name := "<projectName",
+  version := "0.0.1"
 )
 
 lazy val zioDeps = libraryDependencies ++= Seq(
