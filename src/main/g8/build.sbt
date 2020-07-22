@@ -15,8 +15,8 @@ inThisBuild(
     licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
       Developer(
-        "<nickname>",
-        "<given name>",
+        "<nickName>",
+        "<givenName>",
         "<email>",
         url("https://github.com/<developer>")
       )
@@ -31,7 +31,8 @@ lazy val commonSettings = Seq(
 // Refine scalac params from tpolecat
   scalacOptions --= Seq(
     "-Xfatal-warnings"
-  )
+  ),
+  name := "<projectName"
 )
 
 lazy val zioDeps = libraryDependencies ++= Seq(
@@ -45,9 +46,16 @@ lazy val root = (project in file("."))
   .settings(
     maxErrors := 3,
     commonSettings,
+    pubSettings,
     zioDeps,
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
   )
+
+lazy val pubSettings = Seq(
+  bintrayRepository := "<repoName>",
+  publishMavenStyle := true,
+  bintrayOrganization := Some("zio-crew")
+)
 
 // Aliases
 addCommandAlias("rel", "reload")
